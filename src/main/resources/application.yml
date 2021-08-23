@@ -1,0 +1,31 @@
+micronaut:
+  application:
+    name: employeeService
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+info:
+  title: employee-service
+  description: Employee API
+  contact:
+    name: Dimitri
+    url: "https://rogeriofontes.inf.br"
+  version: "1.0"
+datasources:
+  default:
+    url: jdbc:mariadb://localhost:3306/employees
+    driverClassName: org.mariadb.jdbc.Driver
+    username: dbuser
+    password: dbpass
+    schema-generate: CREATE_DROP
+    dialect: MYSQL
+jpa.default.properties.hibernate.hbm2ddl.auto: none
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:db/migration
+jackson.serialization.writeDatesAsTimestamps: false
